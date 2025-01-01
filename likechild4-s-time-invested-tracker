@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Investment Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #6200ea;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        section {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #6200ea;
+            color: white;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+        }
+        .progress {
+            margin-top: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 20px;
+            width: 0%;
+            background-color: #6200ea;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>2025 Investment Tracker</h1>
+    </header>
+    <section>
+        <h2>Investments</h2>
+        <table id="investmentsTable">
+            <thead>
+                <tr>
+                    <th>Investment Name</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <input type="text" id="investmentName" placeholder="Investment Name">
+        <input type="number" id="investmentAmount" placeholder="Amount">
+        <button onclick="addInvestment()">Add Investment</button>
+        <div class="progress">
+            <div id="investmentProgress" class="progress-bar">0%</div>
+        </div>
+    </section>
+    <section>
+        <h2>Skills</h2>
+        <table id="skillsTable">
+            <thead>
+                <tr>
+                    <th>Skill</th>
+                    <th>Proficiency</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <input type="text" id="skillName" placeholder="Skill">
+        <input type="text" id="skillProficiency" placeholder="Proficiency (e.g., Beginner, Expert)">
+        <button onclick="addSkill()">Add Skill</button>
+    </section>
+    <section>
+        <h2>Block Shipping</h2>
+        <table id="blockShippingTable">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <input type="text" id="productName" placeholder="Product Name">
+        <input type="number" id="productQuantity" placeholder="Quantity">
+        <button onclick="addProduct()">Add Product</button>
+    </section>
+    <script>
+        function addInvestment() {
+            const name = document.getElementById('investmentName').value;
+            const amount = document.getElementById('investmentAmount').value;
+            if (name && amount) {
+                const table = document.getElementById('investmentsTable').getElementsByTagName('tbody')[0];
+                const newRow = table.insertRow();
+                newRow.innerHTML = `<td>${name}</td><td>${amount}</td><td>In Progress</td>`;
+                document.getElementById('investmentName').value = '';
+                document.getElementById('investmentAmount').value = '';
+            }
+        }
+        function addSkill() {
+            const name = document.getElementById('skillName').value;
+            const proficiency = document.getElementById('skillProficiency').value;
+            if (name && proficiency) {
+                const table = document.getElementById('skillsTable').getElementsByTagName('tbody')[0];
+                const newRow = table.insertRow();
+                newRow.innerHTML = `<td>${name}</td><td>${proficiency}</td>`;
+                document.getElementById('skillName').value = '';
+                document.getElementById('skillProficiency').value = '';
+            }
+        }
+        function addProduct() {
+            const name = document.getElementById('productName').value;
+            const quantity = document.getElementById('productQuantity').value;
+            if (name && quantity) {
+                const table = document.getElementById('blockShippingTable').getElementsByTagName('tbody')[0];
+                const newRow = table.insertRow();
+                newRow.innerHTML = `<td>${name}</td><td>${quantity}</td><td>Pending</td>`;
+                document.getElementById('productName').value = '';
+                document.getElementById('productQuantity').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
